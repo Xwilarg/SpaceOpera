@@ -3,7 +3,7 @@ extends KinematicBody2D
 var speed = 200
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func _physics_process(delta):
 	var x = 0
@@ -20,3 +20,6 @@ func _physics_process(delta):
 
 	var velocity = (global_transform.y * y + global_transform.x * x).normalized()
 	move_and_slide(velocity * speed)
+	
+	if Input.is_action_pressed("shoot"):
+		print($RayCast2D.get_collision())
