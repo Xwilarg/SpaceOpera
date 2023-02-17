@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Character
 
 var speed = 200
 var reload_time = 0.0
@@ -26,5 +26,10 @@ func _physics_process(delta):
 	move_and_slide(velocity * speed)
 	
 	if Input.is_action_pressed("shoot") && reload_time <= 0.0:
-		print($RayCast2D.get_collider())
 		reload_time = 1.0
+		var collider = $RayCast2D.get_collider()
+		shoot($RayCast2D.get_collision_point())
+		if collider is Character:
+			collider.take_damage(10)
+		else:
+			return
