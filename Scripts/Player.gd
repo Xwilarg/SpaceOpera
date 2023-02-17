@@ -1,11 +1,15 @@
 extends KinematicBody2D
 
 var speed = 200
+var reload_time = 0.0
 
 func _ready():
 	pass
 
 func _physics_process(delta):
+	if reload_time > 0.0:
+		reload_time -= delta
+
 	var x = 0
 	var y = 0
 
@@ -21,5 +25,6 @@ func _physics_process(delta):
 	var velocity = (global_transform.y * y + global_transform.x * x).normalized()
 	move_and_slide(velocity * speed)
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") && reload_time <= 0.0:
 		print($RayCast2D.get_collider())
+		reload_time = 1.0
