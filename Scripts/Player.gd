@@ -22,4 +22,4 @@ func _physics_process(delta):
 	move_and_slide(velocity * speed)
 	
 	if Input.is_action_pressed("shoot"):
-		print($RayCast2D.get_collision())
+		print($RayCast2D.get_collider())
