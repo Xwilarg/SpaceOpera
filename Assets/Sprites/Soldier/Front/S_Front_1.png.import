@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/S_Front_1.png-0d0e438e6f3607b804ce9f04f9c703d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://Sprites/Soldier/Front/S_Front_1.png"
+dest_files=[ "res://.import/S_Front_1.png-0d0e438e6f3607b804ce9f04f9c703d7.stex" ]
 
 [params]
 
