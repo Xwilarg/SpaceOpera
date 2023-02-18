@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SpaceOpera.NPC
@@ -21,6 +22,16 @@ namespace SpaceOpera.NPC
                 Add(n);
                 n.Add(this);
             }
+        }
+
+        public Node GetNextNode(Node exclude)
+        {
+            if (_nodes.Count == 1)
+            {
+                return _nodes[0];
+            }
+            var ns = _nodes.Where(x => x != exclude).ToArray();
+            return ns[Random.Range(0, ns.Length)];
         }
 
         private void Add(Node n)

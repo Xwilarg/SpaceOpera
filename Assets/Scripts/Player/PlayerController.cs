@@ -1,21 +1,13 @@
 using SpaceOpera.Computer;
 using SpaceOpera.Prop;
-using SpaceOpera.SO;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace SpaceOpera.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : Character
     {
-        [SerializeField]
-        private PlayerInfo _info;
-
-        private Vector2 _mov;
-        private Animator _anim;
-        private SpriteRenderer _sr;
-        private Rigidbody2D _rb;
         private Camera _cam;
 
         private bool _canShoot = true;
@@ -23,15 +15,18 @@ namespace SpaceOpera.Player
 
         private void Awake()
         {
-            _anim = GetComponent<Animator>();
-            _sr = GetComponent<SpriteRenderer>();
-            _rb = GetComponent<Rigidbody2D>();
             _cam = GetComponentInChildren<Camera>();
+            Init();
         }
 
         private void FixedUpdate()
         {
-            _rb.velocity = _mov * Time.fixedDeltaTime * _info.Speed;
+            _FixedUpdate();
+
+            if (_mov.magnitude != 0f)
+            {
+                ComputerManager.Instance.Close();
+            }
         }
 
         private void Update()
@@ -53,39 +48,6 @@ namespace SpaceOpera.Player
         public void Move(InputAction.CallbackContext value)
         {
             _mov = value.ReadValue<Vector2>().normalized;
-
-            bool isMoving = _mov.magnitude != 0f;
-
-            _anim.SetBool("IsWalking", isMoving);
-
-            if (isMoving)
-            {
-                ComputerManager.Instance.Close();
-                if (Mathf.Abs(_mov.y) > Mathf.Abs(_mov.x))
-                {
-                    _sr.flipX = false;
-                    if (_mov.y > 0)
-                    {
-                        _anim.SetInteger("Direction", 1);
-                    }
-                    else
-                    {
-                        _anim.SetInteger("Direction", 0);
-                    }
-                }
-                else
-                {
-                    _anim.SetInteger("Direction", 2);
-                    if (_mov.x > 0f)
-                    {
-                        _sr.flipX = true;
-                    }
-                    else
-                    {
-                        _sr.flipX = false;
-                    }
-                }
-            }
         }
 
         public void Shoot(InputAction.CallbackContext value)
