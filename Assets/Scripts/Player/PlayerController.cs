@@ -1,3 +1,4 @@
+using SpaceOpera.Prop;
 using SpaceOpera.SO;
 using System.Collections;
 using UnityEngine;
@@ -94,6 +95,21 @@ namespace SpaceOpera.Player
             else if (value.phase == InputActionPhase.Canceled)
             {
                 _isShooting = false;
+            }
+        }
+
+        public void Use(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                var hit = Physics2D.Raycast(transform.position, _mov, 0.5f, ~(1 << 6));
+                if (hit.collider != null)
+                {
+                    if (hit.collider.TryGetComponent<Interactible>(out var component))
+                    {
+                        component.Invoke();
+                    }
+                }
             }
         }
 

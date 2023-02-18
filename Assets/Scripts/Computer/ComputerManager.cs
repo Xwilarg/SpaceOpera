@@ -19,9 +19,12 @@ namespace SpaceOpera.Computer
             Instance = this;
         }
 
-        public void Show(ScreenType type)
-        {
-
+        public void Show(GameObject screen)
+        {;
+            _computer.SetActive(true);
+            for (int i = 0; i < _screenContainer.childCount; i++)
+                _screenContainer.GetChild(i).gameObject.SetActive(false);
+            screen.SetActive(true);
         }
     }
 }
