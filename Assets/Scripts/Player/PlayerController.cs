@@ -1,3 +1,4 @@
+using SpaceOpera.Audio;
 using SpaceOpera.Computer;
 using SpaceOpera.Prop;
 using System.Collections;
@@ -52,6 +53,7 @@ namespace SpaceOpera.Player
 
         public void Shoot(InputAction.CallbackContext value)
         {
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.LaserShot, transform.position);
             if (value.phase == InputActionPhase.Started)
             {
                 _isShooting = true;
