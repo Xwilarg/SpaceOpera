@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UnityEngine;
 
 namespace SpaceOpera.Prop
 {
-    internal class Door
+    public class Door : MonoBehaviour
     {
+        public void Open()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
