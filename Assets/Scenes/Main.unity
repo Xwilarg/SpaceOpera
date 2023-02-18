@@ -6826,14 +6826,18 @@ PrefabInstance:
     - target: {fileID: 1086301872221326340, guid: 3895b5087a9da934c9d1ce6679a68130, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: cc0390662d928894f9b8cb3986c69abf, type: 2}
+      objectReference: {fileID: 22100000, guid: 49937d3bdc973f449b4e7c6f468d7d87, type: 2}
     - target: {fileID: 1086301872221326350, guid: 3895b5087a9da934c9d1ce6679a68130, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1086301872221326351, guid: 3895b5087a9da934c9d1ce6679a68130, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e58da07fa94a3cf459b0c9fb66d9392a, type: 3}
+    - target: {fileID: 1086301872221326351, guid: 3895b5087a9da934c9d1ce6679a68130, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1086301872221326351, guid: 3895b5087a9da934c9d1ce6679a68130, type: 3}
       propertyPath: m_SortingLayerID

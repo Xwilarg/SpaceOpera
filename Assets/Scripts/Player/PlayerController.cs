@@ -1,3 +1,4 @@
+using SpaceOpera.Computer;
 using SpaceOpera.Prop;
 using SpaceOpera.SO;
 using System.Collections;
@@ -59,6 +60,7 @@ namespace SpaceOpera.Player
 
             if (isMoving)
             {
+                ComputerManager.Instance.Close();
                 if (Mathf.Abs(_mov.y) > Mathf.Abs(_mov.x))
                 {
                     _sr.flipX = false;
