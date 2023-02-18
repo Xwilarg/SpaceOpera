@@ -39,6 +39,7 @@ namespace SpaceOpera.Player
                 float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg + Random.Range(-_info.BulletOffset, _info.BulletOffset);
                 var bullet = Instantiate(_info.BulletPrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
                 bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * _info.BulletSpeed, ForceMode2D.Impulse);
+                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.LaserShot, transform.position);
                 StartCoroutine(Reload());
             }
         }
@@ -53,7 +54,6 @@ namespace SpaceOpera.Player
 
         public void Shoot(InputAction.CallbackContext value)
         {
-            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.LaserShot, transform.position);
             if (value.phase == InputActionPhase.Started)
             {
                 _isShooting = true;
