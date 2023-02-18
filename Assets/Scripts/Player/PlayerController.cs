@@ -38,18 +38,36 @@ namespace SpaceOpera.Player
         {
             _mov = value.ReadValue<Vector2>().normalized;
 
-            bool isMoving = _mov.x != 0;
+            bool isMoving = _mov.magnitude != 0f;
 
-            _anim.SetBool("IsMoving", isMoving);
+            _anim.SetBool("IsWalking", isMoving);
 
-            // Flip sprite depending of where we are going
-            if (_mov.x > 0f)
+            if (isMoving)
             {
-                _sr.flipX = false;
-            }
-            else if (_mov.x < 0f)
-            {
-                _sr.flipX = true;
+                if (Mathf.Abs(_mov.y) > Mathf.Abs(_mov.x))
+                {
+                    _sr.flipX = false;
+                    if (_mov.y > 0)
+                    {
+                        _anim.SetInteger("Direction", 1);
+                    }
+                    else
+                    {
+                        _anim.SetInteger("Direction", 0);
+                    }
+                }
+                else
+                {
+                    _anim.SetInteger("Direction", 2);
+                    if (_mov.x > 0f)
+                    {
+                        _sr.flipX = true;
+                    }
+                    else
+                    {
+                        _sr.flipX = false;
+                    }
+                }
             }
         }
 
