@@ -1,3 +1,4 @@
+using SpaceOpera.Audio;
 using SpaceOpera.SO;
 using System.Collections;
 using UnityEngine;
@@ -90,6 +91,7 @@ namespace SpaceOpera.Player
             if (value.phase == InputActionPhase.Started)
             {
                 _isShooting = true;
+                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.LaserShot, transform.position);
             }
             else if (value.phase == InputActionPhase.Canceled)
             {

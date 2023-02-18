@@ -307,6 +307,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: 9de0a3156a7268e4fa457032f97204f4, type: 2}
+  _laserShotSound:
+    Guid:
+      Data1: -1347226330
+      Data2: 1153086597
+      Data3: -475627086
+      Data4: -1677256985
+    Path: event:/LaserShot
 --- !u!95 &1086301872221326340
 Animator:
   serializedVersion: 5

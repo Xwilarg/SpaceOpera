@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: FMODAssets/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638123538901863057
+  lastModified: 638123595875866384
   FileSizes: []
   Exists: 1
 --- !u!114 &-3221054402201216175
@@ -33,7 +33,7 @@ MonoBehaviour:
   Path: FMODAssets/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638123538902553086
+  lastModified: 638123595876466372
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -53,15 +53,15 @@ MonoBehaviour:
   - {fileID: -8005996602849265670}
   - {fileID: -3221054402201216175}
   EditorEvents:
-  - {fileID: 1446930348478685670}
+  - {fileID: 6221680914110899531}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8005996602849265670}
   StringsBanks:
   - {fileID: 9126245803274657850}
-  cacheTime: 638123538902553086
+  cacheTime: 638123595876466372
   cacheVersion: 131601
---- !u!114 &1446930348478685670
+--- !u!114 &6221680914110899531
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,9 +71,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/LaserShot
+  m_Name: event:/SFX/LaserShot
   m_EditorClassIdentifier: 
-  Path: event:/LaserShot
+  Path: event:/SFX/LaserShot
   Guid:
     Data1: -1347226330
     Data2: 1153086597
@@ -87,7 +87,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 280
 --- !u!114 &9126245803274657850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,8 +103,8 @@ MonoBehaviour:
   Path: FMODAssets/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638123538901893083
+  lastModified: 638123595875886370
   FileSizes:
   - Name: 
-    Value: 804
+    Value: 808
   Exists: 1
