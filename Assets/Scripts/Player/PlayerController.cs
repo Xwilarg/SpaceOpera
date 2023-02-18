@@ -31,6 +31,9 @@ namespace SpaceOpera.Player
             _rb.velocity = _mov * Time.fixedDeltaTime * _info.Speed;
         }
 
+        public void TakeDamage(int amount)
+        { }
+
         public void Move(InputAction.CallbackContext value)
         {
             _mov = value.ReadValue<Vector2>().normalized;
