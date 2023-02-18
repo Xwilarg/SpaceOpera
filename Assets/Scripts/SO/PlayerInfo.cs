@@ -12,5 +12,6 @@ namespace SpaceOpera.SO
 
         public GameObject BulletPrefab;
         public float BulletSpeed;
+        public float BulletOffset;
     }
 }

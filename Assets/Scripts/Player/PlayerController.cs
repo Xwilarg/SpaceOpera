@@ -17,6 +17,7 @@ namespace SpaceOpera.Player
         private Camera _cam;
 
         private bool _canShoot = true;
+        private bool _isShooting;
 
         private void Awake()
         {
@@ -29,6 +30,19 @@ namespace SpaceOpera.Player
         private void FixedUpdate()
         {
             _rb.velocity = _mov * Time.fixedDeltaTime * _info.Speed;
+        }
+
+        private void Update()
+        {
+            if (_isShooting && _canShoot)
+            {
+                var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Vector3 relPos = screenPos - transform.position;
+                float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg + Random.Range(-_info.BulletOffset, _info.BulletOffset);
+                var bullet = Instantiate(_info.BulletPrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
+                bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * _info.BulletSpeed, ForceMode2D.Impulse);
+                StartCoroutine(Reload());
+            }
         }
 
         public void TakeDamage(int amount)
@@ -73,14 +87,13 @@ namespace SpaceOpera.Player
 
         public void Shoot(InputAction.CallbackContext value)
         {
-            if (value.performed && _canShoot)
+            if (value.phase == InputActionPhase.Started)
             {
-                var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                Vector3 relPos = screenPos - transform.position;
-                float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
-                var bullet = Instantiate(_info.BulletPrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
-                bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * _info.BulletSpeed, ForceMode2D.Impulse);
-                StartCoroutine(Reload());
+                _isShooting = true;
+            }
+            else if (value.phase == InputActionPhase.Canceled)
+            {
+                _isShooting = false;
             }
         }
 

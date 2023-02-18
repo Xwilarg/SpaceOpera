@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d1d58b2ae14094a81f183563dc3360, type: 3}
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
-  Speed: 75
-  GunReloadTime: 1
+  Speed: 150
+  GunReloadTime: 0.2
   BulletPrefab: {fileID: 7129890410022376913, guid: fa80f5d3821acf647b468ec91bb5cb5b, type: 3}
-  BulletSpeed: 3
+  BulletSpeed: 10
+  BulletOffset: 5
