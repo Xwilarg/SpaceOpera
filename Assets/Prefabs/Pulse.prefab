@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7129890410022376915}
   - component: {fileID: 7129890410022376912}
   - component: {fileID: -6709272717828401865}
+  - component: {fileID: 4883135640055120388}
   m_Layer: 7
   m_Name: Pulse
   m_TagString: Untagged
@@ -112,3 +113,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &4883135640055120388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129890410022376913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ddb16e03257aef44971e1ccadcfd1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
