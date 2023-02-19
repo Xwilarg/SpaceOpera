@@ -32,7 +32,7 @@ namespace SpaceOpera.Player
 
         private void Update()
         {
-            if (_isShooting && _canShoot)
+            if (_isShooting && _canShoot && !ComputerManager.Instance.IsEnabled)
             {
                 var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 Vector3 relPos = screenPos - transform.position;
