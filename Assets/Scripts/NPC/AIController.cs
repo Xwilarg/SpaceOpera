@@ -6,6 +6,7 @@ namespace SpaceOpera.NPC
     public class AIController : Character
     {
         private Node _targetNode;
+        private Node _previousNode;
 
         private void Awake()
         {
@@ -21,7 +22,9 @@ namespace SpaceOpera.NPC
 
             if (Vector2.Distance(transform.position, _targetNode.transform.position) < .5f)
             {
-                _targetNode = _targetNode.GetNextNode(_targetNode);
+                var prev = _previousNode;
+                _previousNode = _targetNode;
+                _targetNode = _targetNode.GetNextNode(prev);
             }
         }
     }
