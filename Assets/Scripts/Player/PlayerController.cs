@@ -1,5 +1,6 @@
 using SpaceOpera.Audio;
 using SpaceOpera.Computer;
+using SpaceOpera.Dialogue;
 using SpaceOpera.Prop;
 using System.Collections;
 using UnityEngine;
@@ -22,6 +23,11 @@ namespace SpaceOpera.Player
 
         private void FixedUpdate()
         {
+            if (DialogueManager.Instance.IsEnabled)
+            {
+                return;
+            }
+
             _FixedUpdate();
 
             if (_mov.magnitude != 0f)
@@ -32,7 +38,7 @@ namespace SpaceOpera.Player
 
         private void Update()
         {
-            if (_isShooting && _canShoot && !ComputerManager.Instance.IsEnabled)
+            if (_isShooting && _canShoot && !ComputerManager.Instance.IsEnabled && !DialogueManager.Instance.IsEnabled)
             {
                 var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 Vector3 relPos = screenPos - transform.position;
@@ -54,13 +60,20 @@ namespace SpaceOpera.Player
 
         public void Shoot(InputAction.CallbackContext value)
         {
-            if (value.phase == InputActionPhase.Started)
+            if (DialogueManager.Instance.IsEnabled && value.performed)
             {
-                _isShooting = true;
+                DialogueManager.Instance.Hide();
             }
-            else if (value.phase == InputActionPhase.Canceled)
+            else
             {
-                _isShooting = false;
+                if (value.phase == InputActionPhase.Started)
+                {
+                    _isShooting = true;
+                }
+                else if (value.phase == InputActionPhase.Canceled)
+                {
+                    _isShooting = false;
+                }
             }
         }
 

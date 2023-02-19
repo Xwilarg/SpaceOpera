@@ -28,6 +28,7 @@ namespace SpaceOpera
             bool isMoving = _mov.magnitude != 0f;
 
             _anim.SetBool("IsWalking", isMoving);
+            _sr.sortingOrder = -(int)(transform.position.y * 100f);
 
             if (isMoving)
             {
