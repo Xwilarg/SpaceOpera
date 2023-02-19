@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using SpaceOpera.Dialogue;
+using System.Linq;
 using UnityEngine;
 
 namespace SpaceOpera.NPC
@@ -8,6 +9,8 @@ namespace SpaceOpera.NPC
         private Node _targetNode;
         private Node _previousNode;
 
+        private bool _isSpeaking;
+
         private void Awake()
         {
             Init();
@@ -16,7 +19,7 @@ namespace SpaceOpera.NPC
 
         private void FixedUpdate()
         {
-            _mov = (_targetNode.transform.position - transform.position).normalized;
+            _mov = _isSpeaking ? Vector2.zero : (_targetNode.transform.position - transform.position).normalized;
 
             _FixedUpdate();
 
@@ -26,6 +29,17 @@ namespace SpaceOpera.NPC
                 _previousNode = _targetNode;
                 _targetNode = _targetNode.GetNextNode(prev);
             }
+        }
+
+        public void StartSpeak()
+        {
+            _isSpeaking = true;
+            DialogueManager.Instance.Show("Sir!");
+        }
+
+        public void StopSpeak()
+        {
+            _isSpeaking = false;
         }
     }
 }

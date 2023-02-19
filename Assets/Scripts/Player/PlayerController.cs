@@ -27,7 +27,7 @@ namespace SpaceOpera.Player
         {
             if (DialogueManager.Instance.IsEnabled)
             {
-                return;
+                _mov = Vector2.zero;
             }
 
             _FixedUpdate();
@@ -70,6 +70,11 @@ namespace SpaceOpera.Player
             if (DialogueManager.Instance.IsEnabled && value.performed)
             {
                 DialogueManager.Instance.Hide();
+                if (_interacting != null)
+                {
+                    _interacting.End();
+                    _interacting = null;
+                }
             }
             else if (_interacting == null)
             {
@@ -93,6 +98,7 @@ namespace SpaceOpera.Player
                 {
                     if (hit.collider.TryGetComponent<Interactible>(out var component))
                     {
+                _mov = Vector2.zero;
                         component.Invoke();
                         _interacting = component;
                     }

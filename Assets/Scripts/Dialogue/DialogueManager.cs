@@ -23,6 +23,11 @@ namespace SpaceOpera.Dialogue
             _dialogueContainer.SetActive(false);
         }
 
+        public void Show(string text)
+        {
+            _dialogueText.text = text;
+        }
+
         public bool IsEnabled => _dialogueContainer.activeInHierarchy;
     }
 }
