@@ -15,6 +15,8 @@ namespace SpaceOpera.Player
         private bool _canShoot = true;
         private bool _isShooting;
 
+        private Interactible _interacting;
+
         private void Awake()
         {
             _cam = GetComponentInChildren<Camera>();
@@ -33,6 +35,11 @@ namespace SpaceOpera.Player
             if (_mov.magnitude != 0f)
             {
                 ComputerManager.Instance.Close();
+                if (_interacting != null)
+                {
+                    _interacting.End();
+                    _interacting = null;
+                }
             }
         }
 
@@ -64,7 +71,7 @@ namespace SpaceOpera.Player
             {
                 DialogueManager.Instance.Hide();
             }
-            else
+            else if (_interacting == null)
             {
                 if (value.phase == InputActionPhase.Started)
                 {
@@ -87,6 +94,7 @@ namespace SpaceOpera.Player
                     if (hit.collider.TryGetComponent<Interactible>(out var component))
                     {
                         component.Invoke();
+                        _interacting = component;
                     }
                 }
             }
