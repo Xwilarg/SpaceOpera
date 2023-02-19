@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SpaceOpera.Audio;
+using UnityEngine;
 
 namespace SpaceOpera.Prop
 {
@@ -7,6 +8,7 @@ namespace SpaceOpera.Prop
         public void Open()
         {
             gameObject.SetActive(false);
+            AudioManager.Instance.SetBackgroundMusicParameter("ThemePhase", AudioManager.ThemePhaseKick);
         }
     }
 }
